@@ -1,5 +1,7 @@
 package ru.anton.myolimpoks.services;
 
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import ru.anton.myolimpoks.entity.Role;
 import ru.anton.myolimpoks.entity.User;
@@ -24,5 +26,10 @@ public class UserServiceImpl implements UserService{
                 registrationDto.getPassword(), Arrays.asList(new Role("Role_User")));
 
         return userRepository.save(user);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return null;
     }
 }
