@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 @AllArgsConstructor
 @Table(name ="usr", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class User extends AbstractEntity{

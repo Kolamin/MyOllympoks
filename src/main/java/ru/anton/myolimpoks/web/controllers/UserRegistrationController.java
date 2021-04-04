@@ -1,8 +1,7 @@
-package ru.anton.myolimpoks.web;
+package ru.anton.myolimpoks.web.controllers;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,7 +14,7 @@ import ru.anton.myolimpoks.web.dto.UserRegistrationDto;
 @AllArgsConstructor
 public class UserRegistrationController {
 
-    private UserService userService;
+    private final UserService userService;
 
 
     @ModelAttribute("user")
@@ -24,12 +23,12 @@ public class UserRegistrationController {
     }
 
     @GetMapping
-    public String showRegistration(){
+    public String showRegistration() {
         return "registration";
     }
 
     @PostMapping
-    public String registerUserAccount(@ModelAttribute("user")UserRegistrationDto registrationDto){
+    public String registerUserAccount(@ModelAttribute("user") UserRegistrationDto registrationDto) {
         userService.save(registrationDto);
         return "redirect:/registration?success";
     }

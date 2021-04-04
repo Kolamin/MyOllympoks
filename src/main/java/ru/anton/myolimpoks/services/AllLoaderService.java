@@ -4,12 +4,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 import ru.anton.myolimpoks.MyOlimpoksApplication;
-import ru.anton.myolimpoks.entity.CorrectAnswer;
-import ru.anton.myolimpoks.entity.Question;
-import ru.anton.myolimpoks.entity.TestQuestions;
+import ru.anton.myolimpoks.entity.*;
 import ru.anton.myolimpoks.repositorys.CorrectAnswerRepo;
 import ru.anton.myolimpoks.repositorys.QuestionRepo;
 import ru.anton.myolimpoks.repositorys.TestQuestionsRepo;
+import ru.anton.myolimpoks.repositorys.UserRepository;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -24,13 +23,15 @@ public class AllLoaderService implements CommandLineRunner {
     private final QuestionRepo questionRepo;
     private final CorrectAnswerRepo correctAnswerRepo;
     private final TestQuestionsRepo testQuestionsRepo;
+    private final UserRepository userRepository;
 
     public AllLoaderService(QuestionRepo questionRepo,
                             CorrectAnswerRepo correctAnswerRepo,
-                            TestQuestionsRepo testQuestionsRepo) {
+                            TestQuestionsRepo testQuestionsRepo, UserRepository userRepository) {
         this.questionRepo = questionRepo;
         this.correctAnswerRepo = correctAnswerRepo;
         this.testQuestionsRepo = testQuestionsRepo;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -74,6 +75,7 @@ public class AllLoaderService implements CommandLineRunner {
 
             correctAnswerRepo.save(new CorrectAnswer(split[2]));
         }
+
 
         stringReaderAllTest.close();
         strReaderCorrectAnswer.close();

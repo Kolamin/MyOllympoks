@@ -1,4 +1,4 @@
-package ru.anton.myolimpoks.web;
+package ru.anton.myolimpoks.web.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
