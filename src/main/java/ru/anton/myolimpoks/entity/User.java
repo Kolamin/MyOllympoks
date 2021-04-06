@@ -4,13 +4,13 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name ="usr", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class User extends AbstractEntity{
-
     @Getter
     @Setter
     @Column(name = "first_name")
@@ -36,4 +36,5 @@ public class User extends AbstractEntity{
             inverseJoinColumns = @JoinColumn(
                     name = "role_id", referencedColumnName = "id"))
     private Collection<Role> roles;
+
 }
